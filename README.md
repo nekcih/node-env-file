@@ -62,7 +62,7 @@ Parse and load environment files including substitutions (containing ENV variabl
   // Load any undefined ENV variables from a specified file, but don't crash if the file doesn't exist
   // Usefull for testing env vars in development, but using "real" env vars in production
   envfile(__dirname + '/.env', {raise: false});
-  
+
 ```
 
 
@@ -78,14 +78,14 @@ Parse and load environment files including substitutions (containing ENV variabl
 
     ```javascript
     env('./path/to/.env', {
-        verbose: true, 
+        verbose: true,
         substitutions: true,
-        overwrite: true, 
-        raise: false, 
+        overwrite: true,
+        raise: false,
         logger: console
     });
     ```
-    
+
 
 ## Installation
 
@@ -120,6 +120,3 @@ Parse and load environment files including substitutions (containing ENV variabl
 ## License
 
 Released under the MIT license.
-
-Copyright (c) [Jonas Grimfelt](http://github.com/grimen)
-

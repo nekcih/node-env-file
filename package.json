@@ -14,7 +14,7 @@
     "export",
     "exports"
   ],
-  "version": "0.1.9",
+  "version": "0.1.10",
   "homepage": "https://github.com/nekcih/node-env-file-subst",
   "repository": {
     "type": "git",

@@ -1,6 +1,6 @@
-# NODE-ENV-FILE [![Build Status](https://secure.travis-ci.org/grimen/node-env-file.svg)](http://travis-ci.org/grimen/node-env-file)
+# NODE-ENV-FILE-SUBST
 
-Parse and load environment files (containing ENV variable exports) into Node.js environment, i.e. `process.env`.
+Parse and load environment files including substitutions (containing ENV variable exports) into Node.js environment, i.e. `process.env`.
 
 
 ## Example
@@ -53,7 +53,12 @@ Parse and load environment files (containing ENV variable exports) into Node.js 
   assert.equal(process.env.BAZ, "2");
   assert.equal(process.env.QUX, "");
   assert.equal(process.env.QUUX, undefined);
-  
+
+  // Support substitutions
+  env(__dirname + '/.env3', {overwrite: true, substitutions: true})
+  assert.equal(process.env.BAR, "foo") // uses FOO
+  assert.equal(process.env.BAZ, "substituted") // tries to use FOO_2 but defaults to "substituted"
+
   // Load any undefined ENV variables from a specified file, but don't crash if the file doesn't exist
   // Usefull for testing env vars in development, but using "real" env vars in production
   envfile(__dirname + '/.env', {raise: false});
@@ -72,14 +77,20 @@ Parse and load environment files (containing ENV variable exports) into Node.js 
 * `(filepath, options)`
 
     ```javascript
-    env('./path/to/.env', {verbose: true, overwrite: true, raise: false, logger: console});
+    env('./path/to/.env', {
+        verbose: true, 
+        substitutions: true,
+        overwrite: true, 
+        raise: false, 
+        logger: console
+    });
     ```
-
+    
 
 ## Installation
 
 ```shell
-  $ npm install node-env-file
+  $ npm install node-env-file-subst
 ```
 
 
@@ -112,4 +123,3 @@ Released under the MIT license.
 
 Copyright (c) [Jonas Grimfelt](http://github.com/grimen)
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/grimen/node-env-file/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
